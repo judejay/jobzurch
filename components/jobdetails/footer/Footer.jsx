@@ -1,12 +1,19 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity, Image, Linking } from 'react-native'
 
-import styles from './footer.style'
+import styles from './footer.style';
+import { items } from '../../../constants';
 
 const Footer = () => {
   return (
-    <View>
-      <Text>Footer</Text>
+    <View style={styles.container}>
+      <TouchableOpacity style={styles.likeBtn}>
+        <Image 
+          source={icons.heartOutline}
+          resizeMode='contain'
+          style={styles.likeBtnImage}
+        />
+      </TouchableOpacity>
     </View>
   )
 }
