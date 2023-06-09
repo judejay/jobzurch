@@ -29,14 +29,15 @@ const useFetch = (endpoint, query) => {
           setIsLoading(false);
         } catch (error){
           setError(error);
-          alert("OOPS! There was an error")
+          alert("There was an error")
         } finally {
           setIsLoading(false);
         }
 
       }
       useEffect(() => {
-        fetchData();          
+        fetchData();    
+      
       }, []);
 
       const refetch = () => {
@@ -45,5 +46,5 @@ const useFetch = (endpoint, query) => {
       };
       
       return { data, isLoading, error, refetch };
-    }
-export default useFetch;
+
+};

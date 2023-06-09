@@ -3,19 +3,26 @@ import { View, Text, TouchableOpacity, FlatList, ActivityIndicator } from 'react
 import { useRouter } from 'expo-router'
 import styles from './popularjobs.style'
 import { COLORS, SIZES } from '../../../constants';
-import { PopularJobCard } from '../../common/cards/popular/PopularJobCard';
+import  PopularJobCard  from '../../common/cards/popular/PopularJobCard';
 import useFetch from '../../../hook/useFetch';
 
 const PopularJobs = () => {
   const router = useRouter();
-
+  const [selectedJob, setSelectedJob] = useState();
   const { data, isLoading, error } = useFetch(
-    'search', {
-      query:" React developer",
-      num_pages: 1
-    })
+         'search', {
+           query:" React developer",
+           num_pages: 1
+         });
 
-    console.log(data)
+   // console.log(data)
+
+  const handleCardPress = (item) => {
+    router.push(`/job-details/${item.job_id}`);
+    setSelectedJob(item.job_id);
+  };
+
+  
  
   return (
     <View style={styles.container}>
@@ -37,14 +44,17 @@ const PopularJobs = () => {
         )
         : (
           <FlatList
-            data= {[1,2,3,4]}
-            renderItem={({item}) => (
-                <PopularJobCard 
+            data={data}
+            renderItem={({ item }) => (
+            // console.log(item)
+               <PopularJobCard
                  item={item}
-              /> 
-            )}  
-            keyExtractor={(item) => item?.job_id}     
-            contentContainerStyle={{ columnGap: SIZES.medium}}   
+                selectedJob={selectedJob}
+                 handleCardPress={handleCardPress}
+                />
+            )}
+            keyExtractor={(item) => item.job_id}
+            contentContainerStyle={{ columnGap: SIZES.medium }}
             horizontal
           />
         )}
@@ -53,4 +63,4 @@ const PopularJobs = () => {
   );
 };
 
-export default PopularJobs
+export default PopularJobs;
