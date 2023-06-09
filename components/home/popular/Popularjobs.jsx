@@ -11,11 +11,10 @@ const PopularJobs = () => {
   const [selectedJob, setSelectedJob] = useState();
   const { data, isLoading, error } = useFetch(
          'search', {
-           query:" React developer",
+           query:" React developer in UK",
            num_pages: 1
          });
 
-   // console.log(data)
 
   const handleCardPress = (item) => {
     router.push(`/job-details/${item.job_id}`);
@@ -46,7 +45,6 @@ const PopularJobs = () => {
           <FlatList
             data={data}
             renderItem={({ item }) => (
-            // console.log(item)
                <PopularJobCard
                  item={item}
                 selectedJob={selectedJob}
