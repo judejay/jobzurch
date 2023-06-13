@@ -11,14 +11,14 @@ const PopularJobs = () => {
   const [selectedJob, setSelectedJob] = useState();
   const { data, isLoading, error } = useFetch(
          'search', {
-           query:" React developer in UK",
-           num_pages: 1
+           what:" React developer"
+          
          });
 
 
   const handleCardPress = (item) => {
-    router.push(`/job-details/${item.job_id}`);
-    setSelectedJob(item.job_id);
+    router.push(`/job-details/${item.id}`);
+    setSelectedJob(item.id);
   };
 
   
@@ -51,7 +51,7 @@ const PopularJobs = () => {
                  handleCardPress={handleCardPress}
                 />
             )}
-            keyExtractor={(item) => item.job_id}
+            keyExtractor={(item) => item.id}
             contentContainerStyle={{ columnGap: SIZES.medium }}
             horizontal
           />
