@@ -21,7 +21,7 @@ const Home = () => {
                         <ScreenHeaderBtn iconUrl={icons.menu} dimension="60%" />
                     ),
                     headerRight: () => (
-                        <ScreenHeaderBtn iconUrl={icons.jrad} dimension="100%" />
+                        <ScreenHeaderBtn iconUrl={icons.j310} dimension="100%" />
                     ),
                     headerTitle: ""
                 }}
