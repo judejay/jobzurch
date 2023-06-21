@@ -1,0 +1,17 @@
+{
+    "colorize.languages": [
+        "js",
+        "css",
+        "sass",
+        "scss",
+        "less",
+        "postcss",
+        "sss",
+        "stylus",
+        "xml",
+        "svg"
+    ],
+    "cSpell.words": [
+        "jrad"
+    ]
+}

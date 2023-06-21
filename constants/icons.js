@@ -9,8 +9,10 @@ import location from "../assets/icons/location.png";
 import chevronLeft from '../assets/icons/chevron-left.png';
 import chevronRight from '../assets/icons/chevron-right.png';
 import j310 from '../assets/icons/j310.png';
+import jrad from '../assets/jrad.svg'
 
 export default {
+  jrad,
   j310,
   heart,
   menu,
