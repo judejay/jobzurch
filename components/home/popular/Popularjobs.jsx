@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { View, Text, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, Image, FlatList, Linking, ActivityIndicator } from 'react-native'
 import { useRouter } from 'expo-router'
 import styles from './popularjobs.style'
 import { COLORS, SIZES } from '../../../constants';
@@ -15,11 +15,15 @@ const PopularJobs = () => {
           
          });
 
+         handleClick = (url) => {
+          Linking.canOpenURL(url).then(supported => {
+            if (supported) {
+              Linking.openURL(url);
+            } else {
+            }
+          });
+        };
 
-  const handleCardPress = (item) => {
-    router.push(`/job-details/${item.id}`);
-    setSelectedJob(item.id);
-  };
 
   
  
@@ -47,8 +51,7 @@ const PopularJobs = () => {
             renderItem={({ item }) => (
                <PopularJobCard
                  item={item}
-                selectedJob={selectedJob}
-                 handleCardPress={handleCardPress}
+                 handleCardPress={handleClick}
                 />
             )}
             keyExtractor={(item) => item.id}

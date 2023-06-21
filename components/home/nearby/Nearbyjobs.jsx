@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, ActivityIndicator } from 'react-native'
+import { View, Text, TouchableOpacity, ActivityIndicator , Linking} from 'react-native'
 import { useRouter } from 'expo-router'
 import styles from './nearbyjobs.style'
 import { COLORS } from '../../../constants';
@@ -13,7 +13,14 @@ const NearbyJobs = () => {
           // num_pages: 1
          });
 
-
+         handleClick = (url) => {
+          Linking.canOpenURL(url).then(supported => {
+            if (supported) {
+              Linking.openURL(url);
+            } else {
+            }
+          });
+        };
   const handleCardPress = (item) => {
     router.push(`/job-details/${item.job_id}`);
     setSelectedJob(item.job_id);
@@ -43,8 +50,10 @@ const NearbyJobs = () => {
          data?.map((job) => (
           <NearbyJobCard 
             job={job}
-            key={`nearby-job-${job?.id}`} 
-            handleNavigation={() => router.push('/job-details/${job.id}')}
+            handleNavigate={handleClick}
+
+          //  key={`nearby-job-${job?.id}`} 
+          //  handleNavigation={() => router.push('/job-details/${job.id}')}
           />
          )) 
         )}

@@ -29,10 +29,11 @@ const useFetch = (endpoint, what) => {
         setIsLoading(true);
 
         try {
+          console.log(options)
           const response = await axios.request(options);
           setData(response.data.results);
           console.log(response)
-         // console.log(response.data)
+          console.log(response.data)
 
           //console.log(response.count)
           setIsLoading(false);
